@@ -1,0 +1,9 @@
+[mgr]
+prepend_keymap = [
+	# Start this tab's Claude (bottom pane) in the hovered folder
+	{ on = "C", run = 'shell -- "$HOME/.config/yazi/claude-here.sh" %h', desc = "Claude in hovered folder" },
+	# Open a new Terminal window in the current folder
+	{ on = "T", run = "shell 'open -a Terminal .'", desc = "Open Terminal window here" },
+	# Drop into a shell in this window; type `exit` to return to yazi
+	{ on = "!", run = 'shell "$SHELL" --block', desc = "Open shell here" },
+]
