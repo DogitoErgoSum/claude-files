@@ -16,6 +16,7 @@ The **+** button (or `Cmd+T`) opens a new tab with the same layout.
 | yazi | `C` | Start this tab's Claude in the hovered folder (or jump to it if it's already running) |
 | yazi | `T` | Open a Terminal window in the current folder |
 | yazi | `!` | Drop into a shell here; `exit` returns to yazi |
+| yazi | `Cmd+C` / `Cmd+V` | Copy / paste files (same as `y` / `p`; in other panes they copy and paste text) |
 | WezTerm | `Cmd+I` | Show / hide the keys panel |
 | WezTerm | `Cmd+T` / **+** | New tab |
 | WezTerm | `Cmd+Option+↑` / `↓` | Switch between yazi and Claude |
@@ -50,9 +51,9 @@ yazi's built-in keys (v26.9.1). Press `~` inside yazi for the full list. Keys wr
 |---|---|
 | `Enter` or `o` | Open the file |
 | `O` | Open with… (choose the app) |
-| `y` | Copy the selected files |
+| `Cmd+C` or `y` | Copy the selected files |
 | `x` | Cut the selected files |
-| `p` | Paste here |
+| `Cmd+V` or `p` | Paste here |
 | `P` | Paste and overwrite files with the same name |
 | `Y` or `X` | Cancel copy / cut |
 | `a` | New file (end the name with `/` for a folder) |
