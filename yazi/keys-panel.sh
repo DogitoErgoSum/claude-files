@@ -7,7 +7,7 @@ printf '\e]2;Keys\a'
 cleanup() { printf '\e[?1000l\e[?1006l\e[?25h' }
 trap cleanup EXIT
 
-k() { print -P "  %B%F{blue}${(r:8:)1}%f%b %F{white}$2%f" }   # key, what it does
+k() { print -P " %B%F{blue}${(r:6:)1}%f%b %F{white}$2%f" }   # key, what it does
 h() { print -P "\n %F{magenta}%B$1%b%f" }                      # section heading
 
 draw() {
@@ -17,27 +17,27 @@ draw() {
   printf '\e[%dG' $(( cols - 2 ))
   print -P "%F{red}%B✕%b%f"
   h 'This setup'
-  k 'C'       'Claude in this folder'
-  k 'T'       'Terminal window here'
-  k '⌘T'      'New tab'
-  k '⌘⌥↑ ↓'   'yazi ⇄ Claude'
-  k '⌘I'      'Show / hide this panel'
+  k 'C'      'Claude here'
+  k 'T'      'Terminal here'
+  k '⌘T'     'New tab'
+  k '⌘⌥↑↓'   'yazi ⇄ Claude'
+  k '⌘I'     'Hide panel'
   h 'Files'
-  k 'y  x'    'Copy / cut'
-  k 'p'       'Paste'
-  k 'a'       'New (end / = folder)'
-  k 'r'       'Rename'
-  k 'd'       'Move to Trash'
-  k 'Space'   'Select'
-  k '.'       'Hidden files'
-  k 'c c'     'Copy path'
+  k 'y x'    'Copy / cut'
+  k 'p'      'Paste'
+  k 'a'      'New (/ = dir)'
+  k 'r'      'Rename'
+  k 'd'      'Trash'
+  k 'Space'  'Select'
+  k '.'      'Hidden files'
+  k 'c c'    'Copy path'
   h 'Find & go'
-  k 's  S'    'Search names / text'
-  k 'z'       'Fuzzy jump'
-  k 'g h'     'Home'
-  k 'g d'     'Downloads'
-  k '~'       'All yazi keys'
-  k '/exit'   'Close Claude'
+  k 's S'    'Find name/text'
+  k 'z'      'Fuzzy jump'
+  k 'g h'    'Home'
+  k 'g d'    'Downloads'
+  k '~'      'All keys'
+  k '/exit'  'Close Claude'
 }
 
 trap draw WINCH

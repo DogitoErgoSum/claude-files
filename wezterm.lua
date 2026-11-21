@@ -25,7 +25,7 @@ config.window_frame = { font_size = 13 }
 local YAZI = { '/bin/zsh', '-l', '-i', '-c', 'y ~; exec /bin/zsh -l -i' }
 local WAITER = home .. '/.config/yazi/claude-waiter.sh'
 local KEYS_PANEL = home .. '/.config/yazi/keys-panel.sh'
-local KEYS_PANEL_WIDTH = 30 -- columns
+local KEYS_PANEL_WIDTH = 23 -- columns
 
 local function open_keys_panel(top)
   top:split { direction = 'Right', size = KEYS_PANEL_WIDTH, cwd = home, args = { KEYS_PANEL } }
