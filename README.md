@@ -1,25 +1,18 @@
 # wezterm-yazi-claude
 
-A WezTerm setup for macOS with Chrome-style tabs. Each tab is split in two:
+[Claude Code](https://claude.com/claude-code) with a file manager above it, for macOS. Each WezTerm tab has [yazi](https://github.com/sxyazi/yazi) on top and Claude Code below.
 
-- **Top:** [yazi](https://github.com/sxyazi/yazi), for moving around your files.
-- **Bottom:** a [Claude Code](https://claude.com/claude-code) session. Hover a folder in yazi and press `C` to start Claude in that folder.
+![yazi on top shows src/units.ts, the file Claude just created; Claude's summary is below; the keys panel is on the right](docs/screenshot.png)
 
-A small **keys panel** next to yazi lists the important keys. It stays open until you click its ✕; `Cmd+I` brings it back.
+## Why not just run Claude Code in a terminal?
 
-The **+** button (or `Cmd+T`) opens a new tab with the same layout.
+On its own, Claude Code is a chat. It can't show you your files, so you open Finder or an editor to see what it changed, and you `cd` into a project before you start it. This setup puts the files and Claude in the same window:
 
-![A tab: yazi on top with the keys panel on the right, Claude waiting below](docs/overview.png)
-
-![After pressing C on a folder: Claude runs in that folder while yazi shows its files](docs/claude.png)
-
-## Why it's useful
-
-- **Claude starts in the right folder.** You find the project in yazi, press `C`, and Claude opens there. You don't need to `cd` or type paths, and you can't start Claude in the wrong folder by mistake.
-- **You can see what Claude is doing.** The files Claude creates or edits appear in yazi as it works, and yazi's preview shows their contents. You can check its work without leaving the window.
-- **One tab per project.** Each tab has its own yazi and its own Claude, so several projects can run side by side with no mix-ups. Tabs work like Chrome's (`Cmd+T`, the **+** button).
-- **No switching apps.** Copy, paste, rename, trash, search and preview files in the same window you're talking to Claude in. `Cmd+C`, `Cmd+V` and `Cmd+X` work on files the way they do in Finder.
-- **Easy to learn.** The keys panel keeps the important keys on screen, so you don't need to know yazi before you start.
+- **You see the files while Claude works.** yazi shows the folder Claude is working in, and its preview shows a file as soon as Claude writes it. In the screenshot, Claude has just created `units.ts`, and yazi shows it above.
+- **Starting Claude takes one key.** Find the project in yazi and press `C`. Claude starts in that folder, so you don't type paths or `cd`.
+- **One tab per project.** Each tab has its own yazi and its own Claude. `Cmd+T` or the **+** button opens another tab.
+- **You manage files in the same window.** `Cmd+C`, `Cmd+V`, `Cmd+X` and `Cmd+O` copy, paste, trash and open files, as in Finder.
+- **You don't need to know yazi.** The keys panel on the right lists the important keys. Click its ✕ to close it; `Cmd+I` brings it back.
 
 ## Keys
 
