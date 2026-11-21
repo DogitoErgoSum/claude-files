@@ -48,7 +48,7 @@ wezterm.on('new-tab-button-click', function(window, pane, button)
   end
 end)
 
--- Cheat sheet (Cmd+/): a searchable list of keys. Picking one presses it in this tab's yazi.
+-- Cheat sheet (Cmd+I, or Cmd+/): a searchable list of keys. Picking one presses it in this tab's yazi.
 -- { group, key as shown, what it does, keys to send to yazi (nil = just a reminder) }
 local KEYS = {
   { 'This setup', 'C',            'Start Claude in the hovered folder', 'C' },
@@ -147,11 +147,13 @@ end)
 
 -- Hint in the tab bar
 wezterm.on('update-right-status', function(window)
-  window:set_right_status(wezterm.format { { Foreground = { AnsiColor = 'Grey' } }, { Text = '⌘/ keys  ' } })
+  window:set_right_status(wezterm.format { { Foreground = { AnsiColor = 'Grey' } }, { Text = '⌘I keys  ' } })
 end)
 
 config.keys = {
+  { key = 'i', mods = 'CMD', action = show_keys },
   { key = '/', mods = 'CMD', action = show_keys },
+  { key = '/', mods = 'CMD|SHIFT', action = show_keys }, -- layouts where / needs Shift (e.g. Portuguese)
   { key = 't', mods = 'CMD', action = wezterm.action_callback(function(window) new_tab(window:mux_window()) end) },
   -- Switch between yazi and Claude
   { key = 'UpArrow',   mods = 'CMD|ALT', action = wezterm.action.ActivatePaneDirection 'Up' },

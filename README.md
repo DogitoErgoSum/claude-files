@@ -14,7 +14,7 @@ The **+** button (or `Cmd+T`) opens a new tab with the same layout.
 | yazi | `C` | Start this tab's Claude in the hovered folder (or jump to it if it's already running) |
 | yazi | `T` | Open a Terminal window in the current folder |
 | yazi | `!` | Drop into a shell here; `exit` returns to yazi |
-| WezTerm | `Cmd+/` | Searchable list of every key (Enter presses it in yazi) |
+| WezTerm | `Cmd+I` (or `Cmd+/`) | Searchable list of every key (Enter presses it in yazi) |
 | WezTerm | `Cmd+T` / **+** | New tab |
 | WezTerm | `Cmd+Option+↑` / `↓` | Switch between yazi and Claude |
 
@@ -22,7 +22,7 @@ Quitting yazi (`q`) leaves a shell in the folder you were in. Closing the Claude
 
 ## yazi cheat sheet
 
-In WezTerm, press `Cmd+/` for a searchable version of this list: type a word like *copy* or *trash*, and Enter presses that key in yazi for you. The list lives in `KEYS` in `wezterm.lua`.
+In WezTerm, press `Cmd+I` (or `Cmd+/`) for a searchable version of this list: type a word like *copy* or *trash*, and Enter presses that key in yazi for you. The list lives in `KEYS` in `wezterm.lua`.
 
 yazi's built-in keys (v26.9.1). Press `~` inside yazi for the full list. Keys written `g h` mean press `g`, then `h`.
 
