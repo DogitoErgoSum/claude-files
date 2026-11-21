@@ -27,7 +27,7 @@ draw() {
   k 'x'      'Cut'
   k 'a'      'New (/ = dir)'
   k 'r'      'Rename'
-  k 'd'      'Trash'
+  k '⌘X d'   'Trash'
   k 'Space'  'Select'
   k '.'      'Hidden files'
   k 'c c'    'Copy path'

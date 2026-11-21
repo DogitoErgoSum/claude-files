@@ -74,7 +74,7 @@ local toggle_keys_panel = wezterm.action_callback(function(window, pane)
   end
 end)
 
--- In yazi, Cmd+C / Cmd+V copy and paste files (yazi's y / p). Everywhere else they copy and paste text.
+-- In yazi, Cmd+C / Cmd+V copy and paste files (yazi's y / p) and Cmd+X moves them to Trash (d). Everywhere else they copy and paste text.
 local function in_yazi(pane)
   return (pane:get_foreground_process_name() or ''):match('yazi$') ~= nil
 end
@@ -92,6 +92,7 @@ end
 config.keys = {
   { key = 'c', mods = 'CMD', action = yazi_or('y', wezterm.action.CopyTo 'Clipboard') },
   { key = 'v', mods = 'CMD', action = yazi_or('p', wezterm.action.PasteFrom 'Clipboard') },
+  { key = 'x', mods = 'CMD', action = yazi_or('d', wezterm.action.Nop) }, -- Move to Trash in yazi
   { key = 'i', mods = 'CMD', action = toggle_keys_panel },
   { key = 't', mods = 'CMD', action = wezterm.action_callback(function(window) new_tab(window:mux_window()) end) },
   -- Switch between yazi and Claude

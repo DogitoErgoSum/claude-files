@@ -17,6 +17,7 @@ The **+** button (or `Cmd+T`) opens a new tab with the same layout.
 | yazi | `T` | Open a Terminal window in the current folder |
 | yazi | `!` | Drop into a shell here; `exit` returns to yazi |
 | yazi | `Cmd+C` / `Cmd+V` | Copy / paste files (same as `y` / `p`; in other panes they copy and paste text) |
+| yazi | `Cmd+X` | Move the selected files to Trash (same as `d`; does nothing in other panes) |
 | WezTerm | `Cmd+I` | Show / hide the keys panel |
 | WezTerm | `Cmd+T` / **+** | New tab |
 | WezTerm | `Cmd+Option+↑` / `↓` | Switch between yazi and Claude |
@@ -58,7 +59,7 @@ yazi's built-in keys (v26.9.1). Press `~` inside yazi for the full list. Keys wr
 | `Y` or `X` | Cancel copy / cut |
 | `a` | New file (end the name with `/` for a folder) |
 | `r` | Rename |
-| `d` | Move to Trash |
+| `Cmd+X` or `d` | Move to Trash |
 | `D` | Delete permanently |
 | `-` | Create a symlink to the copied files |
 | `.` | Show / hide hidden files |
