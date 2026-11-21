@@ -4,6 +4,8 @@ prepend_keymap = [
 	{ on = "C", run = 'shell -- "$HOME/.config/yazi/claude-here.sh" %h', desc = "Claude in hovered folder" },
 	# Open a new Terminal window in the current folder
 	{ on = "T", run = "shell 'open -a Terminal .'", desc = "Open Terminal window here" },
+	# Open the selected files (or the hovered one) in their Mac app, like double-clicking in Finder. WezTerm's Cmd+O sends this.
+	{ on = "<C-o>", run = "shell -- open %s", desc = "Open in Mac app" },
 	# Drop into a shell in this window; type `exit` to return to yazi
 	{ on = "!", run = 'shell "$SHELL" --block', desc = "Open shell here" },
 ]

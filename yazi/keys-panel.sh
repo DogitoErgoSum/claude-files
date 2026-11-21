@@ -23,6 +23,7 @@ draw() {
   k '⌘⌥↑↓'   'yazi ⇄ Claude'
   k '⌘I'     'Hide panel'
   h 'Files'
+  k '⌘O'     'Open in app'
   k '⌘C ⌘V'  'Copy / paste'
   k 'x'      'Cut'
   k 'a'      'New (/ = dir)'

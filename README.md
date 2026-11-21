@@ -9,6 +9,18 @@ A small **keys panel** next to yazi lists the important keys. It stays open unti
 
 The **+** button (or `Cmd+T`) opens a new tab with the same layout.
 
+![A tab: yazi on top with the keys panel on the right, Claude waiting below](docs/overview.png)
+
+![After pressing C on a folder: Claude runs in that folder while yazi shows its files](docs/claude.png)
+
+## Why it's useful
+
+- **Claude starts in the right folder.** You find the project in yazi, press `C`, and Claude opens there. You don't need to `cd` or type paths, and you can't start Claude in the wrong folder by mistake.
+- **You can see what Claude is doing.** The files Claude creates or edits appear in yazi as it works, and yazi's preview shows their contents. You can check its work without leaving the window.
+- **One tab per project.** Each tab has its own yazi and its own Claude, so several projects can run side by side with no mix-ups. Tabs work like Chrome's (`Cmd+T`, the **+** button).
+- **No switching apps.** Copy, paste, rename, trash, search and preview files in the same window you're talking to Claude in. `Cmd+C`, `Cmd+V` and `Cmd+X` work on files the way they do in Finder.
+- **Easy to learn.** The keys panel keeps the important keys on screen, so you don't need to know yazi before you start.
+
 ## Keys
 
 | Where | Key | What it does |
@@ -18,6 +30,7 @@ The **+** button (or `Cmd+T`) opens a new tab with the same layout.
 | yazi | `!` | Drop into a shell here; `exit` returns to yazi |
 | yazi | `Cmd+C` / `Cmd+V` | Copy / paste files (same as `y` / `p`; in other panes they copy and paste text) |
 | yazi | `Cmd+X` | Move the selected files to Trash (same as `d`; does nothing in other panes) |
+| yazi | `Cmd+O` | Open the hovered file (or the selected ones) in its Mac app, like double-clicking in Finder: TextEdit, Preview, … A folder opens in Finder |
 | WezTerm | `Cmd+I` | Show / hide the keys panel |
 | WezTerm | `Cmd+T` / **+** | New tab |
 | WezTerm | `Cmd+Option+↑` / `↓` | Switch between yazi and Claude |
@@ -50,7 +63,8 @@ yazi's built-in keys (v26.9.1). Press `~` inside yazi for the full list. Keys wr
 
 | Key | What it does |
 |---|---|
-| `Enter` or `o` | Open the file |
+| `Enter` or `o` | Open the file (text files open in `vi` inside yazi unless `$EDITOR` is set; `Cmd+O` opens them in their Mac app) |
+| `Cmd+O` or `Ctrl+O` | Open in the Mac app (this setup) |
 | `O` | Open with… (choose the app) |
 | `Cmd+C` or `y` | Copy the selected files |
 | `x` | Cut the selected files |
