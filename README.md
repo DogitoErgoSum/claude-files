@@ -5,6 +5,8 @@ A WezTerm setup for macOS with Chrome-style tabs. Each tab is split in two:
 - **Top:** [yazi](https://github.com/sxyazi/yazi), for moving around your files.
 - **Bottom:** a [Claude Code](https://claude.com/claude-code) session. Hover a folder in yazi and press `C` to start Claude in that folder.
 
+A small **keys panel** next to yazi lists the important keys. It stays open until you click its ✕; `Cmd+I` brings it back.
+
 The **+** button (or `Cmd+T`) opens a new tab with the same layout.
 
 ## Keys
@@ -14,7 +16,7 @@ The **+** button (or `Cmd+T`) opens a new tab with the same layout.
 | yazi | `C` | Start this tab's Claude in the hovered folder (or jump to it if it's already running) |
 | yazi | `T` | Open a Terminal window in the current folder |
 | yazi | `!` | Drop into a shell here; `exit` returns to yazi |
-| WezTerm | `Cmd+I` (or `Cmd+/`) | Searchable list of every key (Enter presses it in yazi) |
+| WezTerm | `Cmd+I` | Show / hide the keys panel |
 | WezTerm | `Cmd+T` / **+** | New tab |
 | WezTerm | `Cmd+Option+↑` / `↓` | Switch between yazi and Claude |
 
@@ -22,7 +24,7 @@ Quitting yazi (`q`) leaves a shell in the folder you were in. Closing the Claude
 
 ## yazi cheat sheet
 
-In WezTerm, press `Cmd+I` (or `Cmd+/`) for a searchable version of this list: type a word like *copy* or *trash*, and Enter presses that key in yazi for you. The list lives in `KEYS` in `wezterm.lua`.
+In WezTerm, the most important of these are always on screen in a small **keys panel** next to yazi. Click its ✕ (or press `q` in it) to close it, and `Cmd+I` to bring it back. Edit `yazi/keys-panel.sh` to change what it lists.
 
 yazi's built-in keys (v26.9.1). Press `~` inside yazi for the full list. Keys written `g h` mean press `g`, then `h`.
 

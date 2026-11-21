@@ -17,7 +17,7 @@ link() {
 }
 
 link "$repo/wezterm.lua" "$HOME/.wezterm.lua"
-for f in theme.toml keymap.toml claude-here.sh claude-waiter.sh; do
+for f in theme.toml keymap.toml claude-here.sh claude-waiter.sh keys-panel.sh; do
   link "$repo/yazi/$f" "$HOME/.config/yazi/$f"
 done
 
