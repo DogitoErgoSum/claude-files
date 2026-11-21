@@ -3,6 +3,18 @@
 set -e
 repo="${0:A:h}"
 
+# Warn about anything missing (the README's Install section has the brew commands)
+missing=()
+[[ -d /Applications/WezTerm.app ]] || missing+=(WezTerm)
+(( $+commands[yazi] )) || missing+=(yazi)
+(( $+commands[claude] )) || [[ -x "$HOME/.local/bin/claude" ]] || missing+=('Claude Code')
+if (( $#missing )); then
+  echo "Not installed yet: ${(j:, :)missing}. The config is linked anyway; install them before you open WezTerm."
+fi
+if [[ -e "$HOME/.config/wezterm/wezterm.lua" ]]; then
+  echo "Note: you also have ~/.config/wezterm/wezterm.lua. WezTerm uses only one config file, so rename that one to make sure this setup is used."
+fi
+
 link() {
   local src="$1" dst="$2"
   mkdir -p "${dst:h}"

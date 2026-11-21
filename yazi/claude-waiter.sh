@@ -9,4 +9,11 @@ IFS= read -r target < "$fifo"
 rm -f "$fifo"; trap - EXIT HUP INT TERM
 printf '\e[?25h'; clear
 cd -- "$target" || exit 1
-exec "$HOME/.local/bin/claude"
+# Find claude: on PATH, else on your login shell's PATH (npm, nvm, …), else the default install location
+claude="$(whence -p claude || zsh -lic 'whence -p claude' 2>/dev/null | tail -1)"
+[[ -x "$claude" ]] || claude="$HOME/.local/bin/claude"
+if [[ ! -x "$claude" ]]; then
+  print -P "\n   %F{red}Claude Code not found.%f Install it from https://claude.com/claude-code, then press C again.\n   Press Enter to close."
+  read -r; exit 1
+fi
+exec "$claude"

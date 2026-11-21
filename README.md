@@ -14,6 +14,29 @@ On its own, Claude Code is a chat. It can't show you your files, so you open Fin
 - **You manage files in the same window.** `Cmd+C`, `Cmd+V`, `Cmd+X` and `Cmd+O` copy, paste, trash and open files, as in Finder.
 - **You don't need to know yazi.** The keys panel on the right lists the important keys. Click its ✕ to close it; `Cmd+I` brings it back.
 
+## Install
+
+You need a Mac with [Homebrew](https://brew.sh) and [Claude Code](https://claude.com/claude-code). Any way of installing Claude Code works, as long as `claude` runs in your terminal.
+
+```sh
+brew install --cask wezterm
+brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide resvg imagemagick font-symbols-only-nerd-font
+git clone https://github.com/DogitoErgoSum/wezterm-yazi-claude.git
+cd wezterm-yazi-claude && ./install.sh
+```
+
+Then open WezTerm. Pick a folder in yazi and press `C` to start Claude there.
+
+`install.sh` links the config files from this folder into place, so keep the folder where it is. A `git pull` here updates your setup. If you already had any of these files, it renames them with a `.bak` suffix first:
+
+| Repo file | Linked to |
+|---|---|
+| `wezterm.lua` | `~/.wezterm.lua` |
+| `yazi/*` | `~/.config/yazi/*` |
+| `zsh/y.zsh` | sourced from `~/.zshrc` (the `y` command: yazi that changes your shell's folder on quit) |
+
+To uninstall, delete those links (`rm ~/.wezterm.lua ~/.config/yazi/{theme.toml,keymap.toml,claude-here.sh,claude-waiter.sh,keys-panel.sh}`), remove the `source …/y.zsh` line from `~/.zshrc`, and rename any `.bak` files back.
+
 ## Keys
 
 | Where | Key | What it does |
@@ -123,25 +146,6 @@ yazi has its own tabs too (`t t` new, `1`–`9` switch, `[` `]` previous / next)
 |---|---|
 | type `/exit` or press `Ctrl+C` twice | End the Claude session |
 | `Cmd+Option+↑` | Go back to yazi |
-
-## Install
-
-Requirements: macOS, [Homebrew](https://brew.sh) and [Claude Code](https://claude.com/claude-code) installed at `~/.local/bin/claude`.
-
-```sh
-brew install --cask wezterm
-brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide resvg imagemagick font-symbols-only-nerd-font
-git clone https://github.com/DogitoErgoSum/wezterm-yazi-claude.git
-cd wezterm-yazi-claude && ./install.sh
-```
-
-`install.sh` symlinks the config into place and backs up any existing files with a `.bak` suffix:
-
-| Repo file | Linked to |
-|---|---|
-| `wezterm.lua` | `~/.wezterm.lua` |
-| `yazi/*` | `~/.config/yazi/*` |
-| `zsh/y.zsh` | sourced from `~/.zshrc` (the `y` command: yazi that changes your shell's folder on quit) |
 
 ## How it works
 

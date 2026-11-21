@@ -5,7 +5,8 @@ target="${1:-$PWD}"
 target="${target:A}"
 name="${target:t}"; [[ "$target" == "$HOME" ]] && name="~"
 W=/Applications/WezTerm.app/Contents/MacOS/wezterm
-claude="$HOME/.local/bin/claude"
+claude="$(whence -p claude || zsh -lic 'whence -p claude' 2>/dev/null | tail -1)"
+[[ -x "$claude" ]] || claude="$HOME/.local/bin/claude"
 
 if [[ -z "$WEZTERM_PANE" ]]; then
   # Not inside WezTerm: open Claude in a new Terminal window instead
