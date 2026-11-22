@@ -44,8 +44,9 @@ local function new_tab(mux_window)
 end
 
 wezterm.on('gui-startup', function()
-  local tab, top = mux.spawn_window { cwd = home, args = YAZI }
+  local tab, top, window = mux.spawn_window { cwd = home, args = YAZI }
   setup_tab(tab, top)
+  window:gui_window():maximize() -- always open maximized
 end)
 
 -- The + button
