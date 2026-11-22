@@ -28,7 +28,7 @@ draw() {
   k '⌘C ⌘V'  'Copy / paste'
   k 'x'      'Cut'
   k 'a'      'New (/ = dir)'
-  k '⇧⌘N F'  'New folder'
+  k '⌘N F'   'New folder'
   k 'r'      'Rename'
   k 'u'      'Unzip'
   k '⌘X d'   'Trash'

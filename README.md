@@ -7,7 +7,7 @@
 - **See your files while Claude works.** yazi previews each file as soon as Claude writes it: code, images, PDFs, even videos (click to play).
 - **Start Claude with one key.** Pick a folder in yazi and press `C`. No `cd`, no typing paths.
 - **One tab per project.** `Cmd+T` opens a new tab with its own yazi and Claude.
-- **Finder-style keys.** `Cmd+C`, `Cmd+V`, `Cmd+X` and `Cmd+O` copy, paste, trash and open files, `Cmd+Shift+N` makes a folder and `u` unzips.
+- **Finder-style keys.** `Cmd+C`, `Cmd+V`, `Cmd+X` and `Cmd+O` copy, paste, trash and open files, `Cmd+N` makes a folder and `u` unzips.
 - **No yazi knowledge needed.** A panel on the right lists the important keys.
 
 ## Install
@@ -36,7 +36,7 @@ Open WezTerm, pick a folder and press `C`.
 | `Cmd+O` | Open in its Mac app |
 | `Cmd+C` / `Cmd+V` | Copy / paste files |
 | `Cmd+X` | Move to Trash |
-| `Cmd+Shift+N` or `F` | New folder |
+| `Cmd+N` or `F` | New folder |
 | `u` | Unzip here (zip, rar, 7z, tar.gz, …) into a folder named after the archive |
 | `T` | Open a Terminal window here |
 | `↑` `↓` `←` `→` | Move around |
