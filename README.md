@@ -23,7 +23,7 @@ git clone https://github.com/DogitoErgoSum/claude-files.git
 cd claude-files && ./install.sh
 ```
 
-Open WezTerm (it opens full screen), pick a folder and press `C`.
+Open WezTerm (it opens maximized), pick a folder and press `C`.
 
 `install.sh` symlinks the config from this folder (so keep it where it is) and renames any existing files to `.bak`. Run `git pull` here to update.
 
