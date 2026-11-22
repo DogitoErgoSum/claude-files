@@ -1,4 +1,4 @@
-# wezterm-yazi-claude
+# claude-files
 
 [Claude Code](https://claude.com/claude-code) with a file manager above it, for macOS. Each WezTerm tab has [yazi](https://github.com/sxyazi/yazi) on top and Claude below.
 
@@ -17,8 +17,8 @@ You need a Mac with [Homebrew](https://brew.sh) and [Claude Code](https://claude
 ```sh
 brew install --cask wezterm
 brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide resvg imagemagick font-symbols-only-nerd-font
-git clone https://github.com/DogitoErgoSum/wezterm-yazi-claude.git
-cd wezterm-yazi-claude && ./install.sh
+git clone https://github.com/DogitoErgoSum/claude-files.git
+cd claude-files && ./install.sh
 ```
 
 Open WezTerm, pick a folder and press `C`.
