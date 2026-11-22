@@ -1,6 +1,8 @@
 # claude-files
 
-[Claude Code](https://claude.com/claude-code) with a file manager above it, for macOS. Each WezTerm tab has [yazi](https://github.com/sxyazi/yazi) on top and Claude below.
+**Claude Code and your files in one window.** Browse your project on top, talk to Claude below, and watch every file it writes appear as it happens.
+
+Built with [WezTerm](https://wezfurlong.org/wezterm/), [yazi](https://github.com/sxyazi/yazi) and [Claude Code](https://claude.com/claude-code), for macOS.
 
 ![yazi on top shows src/units.ts, the file Claude just created; Claude's summary is below; the keys panel is on the right](docs/screenshot.png)
 
@@ -21,7 +23,7 @@ git clone https://github.com/DogitoErgoSum/claude-files.git
 cd claude-files && ./install.sh
 ```
 
-Open WezTerm, pick a folder and press `C`.
+Open WezTerm (it opens full screen), pick a folder and press `C`.
 
 `install.sh` symlinks the config from this folder (so keep it where it is) and renames any existing files to `.bak`. Run `git pull` here to update.
 
