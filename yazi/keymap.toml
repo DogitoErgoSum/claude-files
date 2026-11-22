@@ -6,6 +6,9 @@ prepend_keymap = [
 	{ on = "T", run = "shell 'open -a Terminal .'", desc = "Open Terminal window here" },
 	# Open the selected files (or the hovered one) in their Mac app, like double-clicking in Finder. WezTerm's Cmd+O sends this.
 	{ on = "<C-o>", run = "shell -- open %s", desc = "Open in Mac app" },
+	# Unzip the selected archives (or the hovered one) next to them, into a folder named after the archive.
+	# Works for zip, rar, 7z, tar.gz and more (yazi's built-in extract, which uses 7zz).
+	{ on = "u", run = "shell -- ya pub extract --list %s", desc = "Unzip here" },
 	# Drop into a shell in this window; type `exit` to return to yazi
 	{ on = "!", run = 'shell "$SHELL" --block', desc = "Open shell here" },
 ]
