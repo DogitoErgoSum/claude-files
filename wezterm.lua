@@ -75,7 +75,8 @@ local toggle_keys_panel = wezterm.action_callback(function(window, pane)
   end
 end)
 
--- In yazi, Cmd+C / Cmd+V copy and paste files (yazi's y / p), Cmd+X moves them to Trash (d)
+-- In yazi, Cmd+C / Cmd+V copy and paste files (yazi's y / p), Cmd+X moves them to Trash (d),
+-- Cmd+Shift+N makes a new folder (F, see yazi/keymap.toml)
 -- and Cmd+O opens them in their Mac app (Ctrl+O, see yazi/keymap.toml). Everywhere else Cmd+C / Cmd+V copy and paste text.
 local function in_yazi(pane)
   return (pane:get_foreground_process_name() or ''):match('yazi$') ~= nil
@@ -96,6 +97,7 @@ config.keys = {
   { key = 'v', mods = 'CMD', action = yazi_or('p', wezterm.action.PasteFrom 'Clipboard') },
   { key = 'x', mods = 'CMD', action = yazi_or('d', wezterm.action.Nop) }, -- Move to Trash in yazi
   { key = 'o', mods = 'CMD', action = yazi_or('o', wezterm.action.Nop, 'CTRL') }, -- Open in Mac app in yazi
+  { key = 'N', mods = 'CMD|SHIFT', action = yazi_or('F', wezterm.action.Nop) }, -- New folder in yazi
   { key = 'i', mods = 'CMD', action = toggle_keys_panel },
   { key = 't', mods = 'CMD', action = wezterm.action_callback(function(window) new_tab(window:mux_window()) end) },
   -- Switch between yazi and Claude
