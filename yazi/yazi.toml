@@ -1,0 +1,16 @@
+# A bigger preview: the right-hand column gets two thirds of yazi's width,
+# and pictures are drawn up to 2000 px instead of yazi's default 600 x 900.
+# For pictures and videos the column is as wide as the picture instead (yazi/plugins/fit-preview.yazi).
+[mgr]
+ratio = [ 1, 2, 6 ] # parent folder, current folder, preview
+
+[preview]
+max_width  = 2000
+max_height = 2000
+
+# Videos: yazi's thumbnail with a ▶ Play button under it. Click the preview to play / pause (yazi/plugins/video-play.yazi).
+[plugin]
+prepend_previewers = [
+	{ mime = "video/*", run = "video-play" },
+	{ mime = "image/*", run = "fit-preview" },
+]

@@ -11,6 +11,7 @@ On its own, Claude Code is a chat. It can't show you your files, so you open Fin
 - **You see the files while Claude works.** yazi shows the folder Claude is working in, and its preview shows a file as soon as Claude writes it. In the screenshot, Claude has just created `units.ts`, and yazi shows it above.
 - **Starting Claude takes one key.** Find the project in yazi and press `C`. Claude starts in that folder, so you don't type paths or `cd`.
 - **One tab per project.** Each tab has its own yazi and its own Claude. `Cmd+T` or the **+** button opens another tab.
+- **You see images, PDFs and videos without opening them.** yazi's preview column is wider than usual and draws pictures at full size, so hovering a file is enough. For a picture or video the column takes exactly the picture's width, so a tall photo leaves more room for the file list and a wide one gets more room itself. A video shows its first frame with a **▶ Play** button: click it to play the video right there, and click again to pause. Useful for checking a chart, a PDF or a clip that Claude just made.
 - **You manage files in the same window.** `Cmd+C`, `Cmd+V`, `Cmd+X` and `Cmd+O` copy, paste, trash and open files, as in Finder.
 - **You don't need to know yazi.** The keys panel on the right lists the important keys. Click its ✕ to close it; `Cmd+I` brings it back.
 
@@ -35,7 +36,7 @@ Then open WezTerm. Pick a folder in yazi and press `C` to start Claude there.
 | `yazi/*` | `~/.config/yazi/*` |
 | `zsh/y.zsh` | sourced from `~/.zshrc` (the `y` command: yazi that changes your shell's folder on quit) |
 
-To uninstall, delete those links (`rm ~/.wezterm.lua ~/.config/yazi/{theme.toml,keymap.toml,claude-here.sh,claude-waiter.sh,keys-panel.sh}`), remove the `source …/y.zsh` line from `~/.zshrc`, and rename any `.bak` files back.
+To uninstall, delete those links (`rm ~/.wezterm.lua ~/.config/yazi/{yazi.toml,init.lua,theme.toml,keymap.toml,claude-here.sh,claude-waiter.sh,keys-panel.sh,plugins/video-play.yazi,plugins/fit-preview.yazi}`), remove the `source …/y.zsh` line from `~/.zshrc`, and rename any `.bak` files back.
 
 ## Keys
 
@@ -46,6 +47,7 @@ To uninstall, delete those links (`rm ~/.wezterm.lua ~/.config/yazi/{theme.toml,
 | yazi | `!` | Drop into a shell here; `exit` returns to yazi |
 | yazi | `Cmd+C` / `Cmd+V` | Copy / paste files (same as `y` / `p`; in other panes they copy and paste text) |
 | yazi | `Cmd+X` | Move the selected files to Trash (same as `d`; does nothing in other panes) |
+| yazi | Click a video's preview | Play it in the preview, with sound; click again to pause. Moving to another file stops it, and coming back shows ▶ Play at the same spot |
 | yazi | `Cmd+O` | Open the hovered file (or the selected ones) in its Mac app, like double-clicking in Finder: TextEdit, Preview, … A folder opens in Finder |
 | WezTerm | `Cmd+I` | Show / hide the keys panel |
 | WezTerm | `Cmd+T` / **+** | New tab |
@@ -150,3 +152,10 @@ yazi has its own tabs too (`t t` new, `1`–`9` switch, `[` `]` previous / next)
 ## How it works
 
 Each new tab runs yazi on top and `claude-waiter.sh` on the bottom. The waiter creates a named pipe and waits. Pressing `C` in yazi runs `claude-here.sh` with the hovered path, which writes the folder into the pipe. The waiter then `cd`s there and starts Claude.
+
+The waiter also saves its pane's ID in `~/.cache/yazi-claude`, and `claude-here.sh` uses it to find this tab's Claude. So `C` still finds Claude after you rearrange or add panes. If that pane has been closed, `C` opens a fresh Claude below yazi and saves the new pane's ID.
+
+
+Video previews come from `yazi/plugins/video-play.yazi`. It shows yazi's usual video thumbnail with a play button under it, and `yazi/init.lua` makes a click on the preview play or pause. To play, ffmpeg writes 12 frames a second into a temporary folder, yazi draws each one in the preview, and ffmpeg plays the sound itself. When you move to another file, yazi cancels the preview, which stops ffmpeg.
+
+The preview's width comes from `yazi/plugins/fit-preview.yazi`. After a picture (or a video's thumbnail) is drawn, the previewer reports how many columns it took; the plugin remembers that for the file and replaces yazi's `Tab:layout` so the preview gets exactly those columns. Other files use the usual `ratio` from `yazi/yazi.toml`.

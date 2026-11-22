@@ -24,6 +24,7 @@ draw() {
   k '⌘I'     'Hide panel'
   h 'Files'
   k '⌘O'     'Open in app'
+  k 'Click'  'Play video'
   k '⌘C ⌘V'  'Copy / paste'
   k 'x'      'Cut'
   k 'a'      'New (/ = dir)'

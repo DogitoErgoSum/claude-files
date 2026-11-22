@@ -21,20 +21,31 @@ OSA
   exit
 fi
 
-fifo="$HOME/.cache/yazi-claude/$WEZTERM_PANE.fifo"
-below="$($W cli get-pane-direction Down --pane-id "$WEZTERM_PANE" 2>/dev/null)"
+dir="$HOME/.cache/yazi-claude"
+fifo="$dir/$WEZTERM_PANE.fifo"
+saved="$dir/$WEZTERM_PANE.pane" # this tab's Claude pane, saved by claude-waiter.sh or below
+claude_pane=""; [[ -r "$saved" ]] && claude_pane="$(<"$saved")"
 
-if [[ -p "$fifo" && -n "$below" ]]; then
-  # Bottom pane is waiting: start Claude in it
-  print -r -- "$target" > "$fifo"
-  $W cli set-tab-title --pane-id "$WEZTERM_PANE" "$name"
-  $W cli activate-pane --pane-id "$below"
-elif [[ -n "$below" ]]; then
-  # Claude already fixed for this tab: just jump to it
-  $W cli activate-pane --pane-id "$below"
+# Is pane $1 still open, and in the same tab as yazi? (Checking the tab matters because
+# pane ids start again from 0 when WezTerm restarts, so an old saved id could be another pane.)
+in_this_tab() {
+  [[ "$1" == <-> ]] || return 1
+  $W cli list --format json 2>/dev/null | jq -e --argjson me "$WEZTERM_PANE" --argjson p "$1" \
+    '(.[] | select(.pane_id == $me) | .tab_id) as $tab | any(.[]; .pane_id == $p and .tab_id == $tab)' >/dev/null
+}
+
+if in_this_tab "$claude_pane"; then
+  if [[ -p "$fifo" ]]; then
+    # Claude's pane is still waiting: start Claude in it
+    print -r -- "$target" > "$fifo"
+    $W cli set-tab-title --pane-id "$WEZTERM_PANE" "$name"
+  fi
+  # Jump to it (if Claude was already running, that's all `C` does)
+  $W cli activate-pane --pane-id "$claude_pane"
 else
-  # Claude pane was closed: open a fresh one below
+  # Claude's pane was closed: open a fresh one below yazi, and remember it
   rm -f "$fifo"
-  $W cli split-pane --pane-id "$WEZTERM_PANE" --bottom --percent 50 --cwd "$target" -- "$claude" >/dev/null
+  new="$($W cli split-pane --pane-id "$WEZTERM_PANE" --bottom --percent 50 --cwd "$target" -- "$claude")"
+  [[ -n "$new" ]] && print -r -- "$new" > "$saved"
   $W cli set-tab-title --pane-id "$WEZTERM_PANE" "$name"
 fi

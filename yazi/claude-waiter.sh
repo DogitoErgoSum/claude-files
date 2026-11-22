@@ -1,7 +1,11 @@
 #!/bin/zsh
 # Bottom pane of a tab: waits until yazi (pane id $1) picks a folder, then runs Claude there.
-fifo="$HOME/.cache/yazi-claude/$1.fifo"
-mkdir -p "${fifo:h}"; rm -f "$fifo"; mkfifo "$fifo"
+dir="$HOME/.cache/yazi-claude"
+fifo="$dir/$1.fifo"
+mkdir -p "$dir"; rm -f "$fifo"; mkfifo "$fifo"
+# Remember this pane, so claude-here.sh finds it wherever it is. Claude replaces this script
+# in the same pane (exec below), so the id stays Claude's.
+print -r -- "$WEZTERM_PANE" > "$dir/$1.pane"
 trap 'rm -f "$fifo"' EXIT HUP INT TERM
 printf '\e]2;Claude\a\e[?25l'; clear
 print -P "\n   %F{8}Pick a folder in yazi above and press%f %BC%b %F{8}to start Claude there.%f"

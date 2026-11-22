@@ -7,6 +7,7 @@ repo="${0:A:h}"
 missing=()
 [[ -d /Applications/WezTerm.app ]] || missing+=(WezTerm)
 (( $+commands[yazi] )) || missing+=(yazi)
+(( $+commands[jq] )) || missing+=(jq) # claude-here.sh uses it to find this tab's Claude pane
 (( $+commands[claude] )) || [[ -x "$HOME/.local/bin/claude" ]] || missing+=('Claude Code')
 if (( $#missing )); then
   echo "Not installed yet: ${(j:, :)missing}. The config is linked anyway; install them before you open WezTerm."
@@ -29,8 +30,11 @@ link() {
 }
 
 link "$repo/wezterm.lua" "$HOME/.wezterm.lua"
-for f in theme.toml keymap.toml claude-here.sh claude-waiter.sh keys-panel.sh; do
+for f in yazi.toml init.lua theme.toml keymap.toml claude-here.sh claude-waiter.sh keys-panel.sh; do
   link "$repo/yazi/$f" "$HOME/.config/yazi/$f"
+done
+for p in video-play fit-preview; do
+  link "$repo/yazi/plugins/$p.yazi" "$HOME/.config/yazi/plugins/$p.yazi"
 done
 
 if ! grep -q 'zsh/y.zsh' "$HOME/.zshrc" 2>/dev/null && ! grep -q '^function y()' "$HOME/.zshrc" 2>/dev/null; then
